@@ -41,17 +41,13 @@ void counting_sort(int *array, size_t size)
 	if (sorted == NULL)
 		return;
 	max = get_max(array, size);
-	count = malloc((max + 1) * sizeof(int));
+	count = calloc((max + 1), sizeof(int));
 	if (count == NULL)
 	{
 		free(sorted);
 		return;
 	}
-
-	/* intialize the count array to all zeros */
-	for (i = 0; i < (max + 1); i++)
-		count[i] = 0;
-	/* count the number of occurences of an element in the input array */ 
+	/* count the number of occurences of an element in the input array */
 	for (i = 0; i < (int)size; i++)
 		count[array[i]] += 1;
 	/* calcuate cumulative values of the original count array */
